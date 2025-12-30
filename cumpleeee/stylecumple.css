@@ -1,0 +1,288 @@
+:root{
+  --bg1:#ffb6d5;
+  --bg2:#ff7fb9;
+  --card:#ffffffcc;
+  --text:#1f1f1f;
+  --muted:#5a5a5a;
+  --shadow: 0 18px 60px rgba(0,0,0,.18);
+  --radius: 22px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  overflow:hidden;
+  background: radial-gradient(1200px 700px at 30% 20%, var(--bg1), var(--bg2));
+}
+
+#bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  z-index:0;
+}
+
+.topbar{
+  position:fixed;
+  top:0; left:0; right:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 18px;
+  z-index:2;
+  gap:12px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.45), rgba(255,255,255,0));
+  backdrop-filter: blur(10px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+.brand .dot{
+  width:10px; height:10px;
+  border-radius:999px;
+  background:#ff2f86;
+  box-shadow: 0 0 0 6px rgba(255,47,134,.18);
+}
+
+.progressWrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:170px;
+  justify-content:flex-end;
+  font-weight:600;
+  color:rgba(0,0,0,.75);
+}
+.bar{
+  width:120px;
+  height:10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.6);
+  overflow:hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.barFill{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg, #ff2f86, #ff7fb9);
+  border-radius:999px;
+  transition: width .45s ease;
+}
+
+.stage{
+  position:relative;
+  z-index:1;
+  height:100%;
+  display:grid;
+  place-items:center;
+  padding:90px 18px 70px;
+}
+
+.card{
+  width:min(980px, 94vw);
+  display:grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap:18px;
+  padding:18px;
+  border-radius:var(--radius);
+  background:var(--card);
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.7);
+  backdrop-filter: blur(14px);
+  opacity:1;
+  transform: translateY(0) scale(1);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+@media (max-width: 860px){
+  .card{ grid-template-columns: 1fr; }
+}
+
+.imgWrap{
+  position:relative;
+  border-radius: calc(var(--radius) - 8px);
+  overflow:hidden;
+  min-height:360px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.14);
+  background: rgba(255,255,255,.4);
+}
+#photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform: scale(1.02);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.shine{
+  position:absolute;
+  inset:-20%;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%);
+  mix-blend-mode: screen;
+  pointer-events:none;
+}
+
+.text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:6px 8px;
+}
+.text h1{
+  margin:0 0 10px;
+  font-size: clamp(22px, 3.2vw, 34px);
+  line-height:1.1;
+}
+.text p{
+  margin:0;
+  color:var(--muted);
+  font-size: clamp(15px, 2vw, 17px);
+  line-height:1.5;
+  white-space: pre-wrap;
+}
+
+.controls{
+  grid-column: 1 / -1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 4px 0;
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:12px 16px;
+  font-weight:700;
+  cursor:pointer;
+  background:#ff2f86;
+  color:white;
+  box-shadow: 0 10px 20px rgba(255,47,134,.25);
+  transition: transform .12s ease, filter .2s ease, opacity .2s ease;
+}
+.btn:hover{ filter: brightness(1.03); }
+.btn:active{ transform: translateY(1px); }
+.btn:disabled{ opacity:.5; cursor:not-allowed; }
+
+.btn.ghost{
+  background: rgba(255,255,255,.6);
+  color: rgba(0,0,0,.8);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+}
+
+.btn.small{
+  padding:10px 12px;
+}
+
+.hint{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color: rgba(0,0,0,.55);
+  font-weight:600;
+  user-select:none;
+}
+.kbd{
+  font-size:12px;
+  padding:6px 8px;
+  border-radius:10px;
+  background: rgba(255,255,255,.65);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+}
+
+.footer{
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:10px 16px;
+  background: linear-gradient(to top, rgba(255,255,255,.45), rgba(255,255,255,0));
+  backdrop-filter: blur(10px);
+  color: rgba(0,0,0,.7);
+}
+.sep{ opacity:.6; }
+
+.fadeOut{
+  opacity:0;
+  transform: translateY(6px) scale(.995);
+}
+
+/* ===== FIX: que quepa en pantalla + look más pro ===== */
+
+/* que el área central no se coma la pantalla */
+.stage{
+  padding: 74px 16px 60px; /* menos padding vertical */
+}
+
+/* card con altura máxima y sin gigantismo */
+.card{
+  width: min(980px, 92vw);
+  max-height: calc(100vh - 140px); /* cabe siempre */
+  overflow: hidden;               /* no desborda */
+  gap: 16px;
+  padding: 16px;
+}
+
+/* imagen: más contenida y responsive */
+.imgWrap{
+  min-height: 0 !important;                 /* quita el mínimo fijo */
+  height: clamp(260px, 55vh, 520px);        /* se adapta a pantalla */
+}
+
+/* en pantallas bajas: reduce aún más */
+@media (max-height: 720px){
+  .imgWrap{ height: clamp(220px, 48vh, 420px); }
+  .card{ max-height: calc(100vh - 120px); }
+}
+
+/* texto: si hay mucho, que haga scroll dentro */
+.text{
+  overflow: auto;
+  max-height: calc(100vh - 220px);
+  padding-right: 6px;
+}
+
+/* scrollbar discreto */
+.text::-webkit-scrollbar{ width: 10px; }
+.text::-webkit-scrollbar-thumb{
+  background: rgba(0,0,0,.12);
+  border-radius: 999px;
+}
+.text::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.35);
+  border-radius: 999px;
+}
+
+/* tipografía más elegante */
+.text h1{
+  letter-spacing: -0.02em;
+}
+.text p{
+  font-size: clamp(14px, 1.6vw, 16px);
+}
+
+/* móvil: apilar y limitar altura */
+@media (max-width: 860px){
+  .card{
+    grid-template-columns: 1fr;
+    max-height: calc(100vh - 130px);
+  }
+  .imgWrap{
+    height: clamp(220px, 42vh, 420px);
+  }
+}

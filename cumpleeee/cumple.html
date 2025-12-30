@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Feliz Cumple ❤️</title>
+  <link rel="stylesheet" href="stylecumple.css" /> 
+</head>
+
+<body>
+  <!-- Fondo animado -->
+  <canvas id="bg"></canvas>
+
+  <!-- UI -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span id="miniTitle">Feliz cumple, mi amor</span>
+    </div>
+
+    <div class="progressWrap" aria-label="Progreso">
+      <span id="counter">1 / 23</span>
+      <div class="bar">
+        <div class="barFill" id="barFill"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="stage" aria-live="polite">
+    <section class="card" id="card">
+      <div class="imgWrap">
+        <img id="photo" alt="Foto" />
+        <div class="shine"></div> 
+      </div>
+
+      <div class="text">
+        <h1 id="title">Feliz cumpleaños ❤️</h1>
+        <p id="message"></p>
+      </div>
+
+      <div class="controls">
+        <button id="prevBtn" class="btn ghost" type="button">← Anterior</button>
+
+        <div class="hint">
+          <span class="kbd">←</span>
+          <span class="kbd">→</span>
+          <span class="kbd">Espacio</span>
+        </div>
+
+        <button id="nextBtn" class="btn" type="button">Siguiente →</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <button id="musicBtn" class="btn small ghost" type="button" aria-pressed="false">
+      🔊 Música: OFF
+    </button>
+    <span class="sep">•</span>
+    <span class="sub">Hecho con amor.</span>
+  </footer>
+
+  <!-- Música opcional: mete un archivo en /audio/musica.mp3 si quieres -->
+  <audio id="eladioMusic" preload="auto">
+  <source src="audio/eladio.mp4" type="video/mp4">
+</audio>
+
+
+  <script src="scriptcumple.js"></script>
+</body>
+</html>
